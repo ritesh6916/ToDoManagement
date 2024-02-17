@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ritesh.boot.todo</groupId>
 	<artifactId>ToDoManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ToDoManagement</name>
-	<description>To Demonstrate: Spring-Boot, MVC, JPA, REST-API, Hibernate, MySQL, Maven, Spring-security, Logging, DevTools, Profiles, HTML, CSS, Bootstrap, JSP, etc.</description>
+	<description>To Demonstrate: Spring-Boot, MVC, JPA, REST-API, Hibernate,
+		MySQL, Maven, Spring-security, Logging, DevTools, Profiles, HTML, CSS,
+		Bootstrap, JSP, etc.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		
+		<!-- To work with Spring Web and REST-APIs -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- for Auto restart and Live reload -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 
+		<!-- For Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -31,6 +43,7 @@
 
 	<build>
 		<plugins>
+			<!-- To create FAT jar etc-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
