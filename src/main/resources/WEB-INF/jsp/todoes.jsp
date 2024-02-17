@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>List Todoes Page</title>
 </head>
 <body>
-
+	<div>Welcome to Ritesh-Tech</div>
+	<div>Your Todoes are: {}</div>
 </body>
 </html>
