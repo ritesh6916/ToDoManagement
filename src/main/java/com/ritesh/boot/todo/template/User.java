@@ -1,9 +1,9 @@
 package com.ritesh.boot.todo.template;
 
 public class User {
-	
-	public  String login;
-	public  String password;
+
+	public String userId;
+	public String password;
 
 	public User() {
 		super();
@@ -11,16 +11,16 @@ public class User {
 
 	public User(String login, String password) {
 		super();
-		this.login = login;
+		this.userId = login;
 		this.password = password;
 	}
 
 	public String getLogin() {
-		return login;
+		return userId;
 	}
 
 	public void setLogin(String login) {
-		this.login = login;
+		this.userId = login;
 	}
 
 	public String getPassword() {
@@ -33,7 +33,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [login=" + login + ", password=" + password + "]";
+		return "User [login=" + userId + ", password=" + password + "]";
 	}
 
 }
