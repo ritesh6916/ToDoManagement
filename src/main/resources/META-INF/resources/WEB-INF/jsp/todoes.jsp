@@ -1,12 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
+	rel="stylesheet">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<h2>I am to do </h2>
+	<div class="container">
+		<h2>The ToDo Management</h2>
+		<hr>
+		<h2>Your to does are:</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Description</th>
+					<th>Is Done ?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${todoes}" var="todo">
+					<tr>
+						<td>${todo.id}</td>
+						<td>${todo.description}</td>
+						<td>${todo.targetDate}</td>
+						<td>${todo.done}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
+			type="text/javascript"></script>
+		<script src="webjars/jquery/3.7.1/jquery.min.js"
+			type="text/javascript"></script>
+	</div>
 </body>
 </html>
