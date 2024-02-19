@@ -28,6 +28,7 @@ public class HomeController {
 			mm.put("userid", userid);
 			return "Home";
 		}
+		mm.addAttribute("Error", "UserID or Password Incorrect");
 		return "login";
 	}
 }
