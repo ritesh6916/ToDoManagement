@@ -7,10 +7,13 @@
 	rel="stylesheet">
 <title>Add-Todo Page</title>
 </head>
-
 <body>
 	<div class="container">
 		<h2>Enter ToDo Details</h2>
+		<form method="post">
+			Description: <input type="text" name="description" /> <input
+				class="btn btn-success" type="submit">
+		</form>
 	</div>
 	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
 		type="text/javascript"></script>
