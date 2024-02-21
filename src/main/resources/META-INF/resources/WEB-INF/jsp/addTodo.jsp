@@ -11,7 +11,7 @@
 	<div class="container">
 		<h2>Enter ToDo Details</h2>
 		<form method="post">
-			Description: <input type="text" name="description" /> <input
+			Description: <input type="text" name="description" required="required"/> <input
 				class="btn btn-success" type="submit">
 		</form>
 	</div>
