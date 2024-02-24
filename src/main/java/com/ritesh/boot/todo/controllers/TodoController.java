@@ -6,12 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ritesh.boot.todo.service.TodoService;
 import com.ritesh.boot.todo.template.Todo;
+
+import jakarta.validation.Valid;
 
 //http://localhost:8080/TodoManagement/login
 
@@ -48,7 +51,11 @@ public class TodoController {
 
 	// to show updated todo
 	@RequestMapping(path = "/add-todo", method = RequestMethod.POST)
-	public String addNewTodo(ModelMap mm, Todo todo) {
+	public String addNewTodo(ModelMap mm, @Valid Todo todo, BindingResult result) {
+		// @Valid to enable validation while accepting the data
+		if (result.hasErrors()) {
+			return "addTodo";
+		}
 		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), LocalDate.now().plusMonths(1), false);
 		return "redirect:/todoes";
 	}
