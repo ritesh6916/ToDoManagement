@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +11,11 @@
 <body>
 	<div class="container">
 		<h2>Enter ToDo Details</h2>
-		<form method="post">
-			Description: <input type="text" name="description" required="required"/> <input
-				class="btn btn-success" type="submit">
-		</form>
+		<form:form method="post" modelAttribute="todo">
+			Description: <form:input type="text" name="description"
+				required="required" path="description" />
+			<input class="btn btn-success" type="submit">
+		</form:form>
 	</div>
 	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
 		type="text/javascript"></script>
