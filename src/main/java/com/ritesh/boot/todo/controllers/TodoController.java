@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ritesh.boot.todo.service.TodoService;
@@ -41,14 +40,16 @@ public class TodoController {
 
 	// To show Add todo page
 	@RequestMapping("/add-todo")
-	public String addTodo() {
+	public String addTodo(ModelMap mm) {
+		Todo todo = new Todo(0, (String) mm.get("userid"), "", LocalDate.now().plusYears(1), false);
+		mm.put("todo", todo);
 		return "addTodo";
 	}
 
 	// to show updated todo
 	@RequestMapping(path = "/add-todo", method = RequestMethod.POST)
-	public String addNewTodo(@RequestParam("description") String Desc, ModelMap mm) {
-		todoService.addtodo((String) mm.get("userid"), Desc, LocalDate.now().plusMonths(1), false);
+	public String addNewTodo(ModelMap mm, Todo todo) {
+		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), LocalDate.now().plusMonths(1), false);
 		return "redirect:/todoes";
 	}
 }
