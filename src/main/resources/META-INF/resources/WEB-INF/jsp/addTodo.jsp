@@ -14,6 +14,7 @@
 		<form:form method="post" modelAttribute="todo">
 			Description: <form:input type="text" name="description"
 				required="required" path="description" />
+			<form:errors path="description" cssClass="text-warning"></form:errors>
 			<input class="btn btn-success" type="submit">
 		</form:form>
 	</div>
