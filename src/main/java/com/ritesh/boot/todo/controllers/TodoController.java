@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ritesh.boot.todo.service.TodoService;
@@ -57,6 +58,13 @@ public class TodoController {
 			return "addTodo";
 		}
 		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), LocalDate.now().plusMonths(1), false);
+		return "redirect:/todoes";
+	}
+
+	// to Delete a todo
+	@RequestMapping("/delete-todo")
+	public String deleteTodo(@RequestParam("id") int id) {
+		todoService.deleteById(id);
 		return "redirect:/todoes";
 	}
 }

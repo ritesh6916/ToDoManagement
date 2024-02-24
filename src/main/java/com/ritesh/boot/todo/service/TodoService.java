@@ -3,6 +3,7 @@ package com.ritesh.boot.todo.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,11 @@ public class TodoService {
 
 	public void addtodo(String user, String description, LocalDate targetDate, boolean done) {
 		todoes.add(new Todo(++countTodo, user, description, targetDate, done));
+	}
+
+	public void deleteById(int id) {
+
+		Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+		todoes.removeIf(predicate);
 	}
 }
