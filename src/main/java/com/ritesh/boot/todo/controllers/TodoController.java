@@ -57,7 +57,7 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "addTodo";
 		}
-		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), LocalDate.now().plusMonths(1), false);
+		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), todo.getTargetDate(), false);
 		return "redirect:/todoes";
 	}
 
