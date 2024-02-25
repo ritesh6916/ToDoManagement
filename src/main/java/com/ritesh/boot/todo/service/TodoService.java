@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.ritesh.boot.todo.template.Todo;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TodoService {
 
@@ -39,5 +41,11 @@ public class TodoService {
 		Predicate<? super Todo> predicate = todo -> todo.getId() == id;
 		Todo todo = todoes.stream().filter(predicate).findFirst().get();
 		return todo;
+	}
+
+	public void updateTodo(@Valid Todo todo) {
+		deleteById(todo.getId());
+		//todoes.add(new Todo(todo.getId(),todo.getUsername(), todo.getDescription(), todo.getTargetDate(), todo.isDone());
+		todoes.add(todo);
 	}
 }
