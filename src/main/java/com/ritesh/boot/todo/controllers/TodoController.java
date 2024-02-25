@@ -42,7 +42,7 @@ public class TodoController {
 		return mm;
 	}
 
-	// To show Add todo page
+	// To show Add TODO page
 	@RequestMapping("/add-todo")
 	public String addTodo(ModelMap mm) {
 		Todo todo = new Todo(0, (String) mm.get("userid"), "", LocalDate.now().plusYears(1), false);
@@ -50,7 +50,7 @@ public class TodoController {
 		return "addTodo";
 	}
 
-	// to show updated todo
+	// to show updated TODO
 	@RequestMapping(path = "/add-todo", method = RequestMethod.POST)
 	public String addNewTodo(ModelMap mm, @Valid Todo todo, BindingResult result) {
 		// @Valid to enable validation while accepting the data
@@ -68,12 +68,24 @@ public class TodoController {
 		return "redirect:/todoes";
 	}
 
-	// to Delete a todo
+	// to show update TODO page with existing details
 	@RequestMapping("/update-todo")
 	public String showUpdateTodo(@RequestParam int id, ModelMap mm) {
 		Todo todo = todoService.findById(id);
 		mm.addAttribute("todo", todo);
 		return "addTodo";
+	}
+
+	// to show updated TODO
+	@RequestMapping(path = "/update-todo", method = RequestMethod.POST)
+	public String updateTodo(ModelMap mm, @Valid Todo todo, BindingResult result) {
+		// @Valid to enable validation while accepting the data
+		if (result.hasErrors()) {
+			return "addTodo";
+		}
+		todo.setUsername((String)mm.get("userid"));
+		todoService.updateTodo(todo);
+		return "redirect:/todoes";
 	}
 
 }
