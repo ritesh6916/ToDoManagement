@@ -12,9 +12,21 @@
 	<div class="container">
 		<h2>Enter ToDo Details</h2>
 		<form:form method="post" modelAttribute="todo">
-			Description: <form:input type="text" name="description"
-				required="required" path="description" />
-			<form:errors path="description" cssClass="text-warning"></form:errors>
+
+			<fieldset class="mb-3">
+				<form:label path="description">Description</form:label>
+				<form:input type="text" name="description" required="required"
+					path="description" />
+				<form:errors path="description" cssClass="text-warning"></form:errors>
+			</fieldset>
+
+			<fieldset class="mb-3">
+				<form:label path="targetDate">Target-Date</form:label>
+				<form:input type="text" name="targetDate" required="required"
+					path="targetDate" />
+				<form:errors path="description" cssClass="text-warning"></form:errors>
+			</fieldset>
+
 			<input class="btn btn-success" type="submit">
 		</form:form>
 	</div>
