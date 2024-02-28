@@ -1,16 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="webjars/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.standalone.min.css"
+<%@ include file="common/header.jspf"%>
+<link
+	href="webjars/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.standalone.min.css"
 	rel="stylesheet">
 <title>Add-Todo Page</title>
 </head>
 <body>
+	<%@ include file="common/navigation.jspf"%>
 	<div class="container">
 		<h2>Enter ToDo Details</h2>
 		<form:form method="post" modelAttribute="todo">
@@ -31,15 +26,12 @@
 			<input class="btn btn-success" type="submit">
 		</form:form>
 	</div>
-	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
-		type="text/javascript"></script>
-	<script src="webjars/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="webjars/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+	<%@ include file="common/footer.jspf"%>
 	<script type="text/javascript">
-	$('#targetDate').datepicker({
-	    format: 'yyyy-mm-dd',
-	    startDate: '-3d'
-	});
+		$('#targetDate').datepicker({
+			format : 'yyyy-mm-dd',
+			startDate : '-3d'
+		});
 	</script>
 </body>
 </html>
