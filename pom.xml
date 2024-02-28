@@ -39,7 +39,7 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- JSTL API -->
 		<dependency>
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -59,14 +59,21 @@
 			<artifactId>bootstrap</artifactId>
 			<version>5.3.2</version>
 		</dependency>
-		
+
 		<!-- to use BootStrap -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
-			<version>3.7.1</version>	
+			<version>3.7.1</version>
 		</dependency>
-	
+
+		<!-- to use Date pickers etc -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-datepicker</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+
 		<!-- For Backend Validation  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
