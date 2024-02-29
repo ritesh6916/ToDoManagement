@@ -1,5 +1,7 @@
 package com.ritesh.boot.todo.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +17,15 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
 	public String welcome(ModelMap mm) {
-		mm.put("userid", "Ritesh6916");
+		mm.put("userid", getLoggedInUserName());
 		return "Home";
+	}
+
+	private String getLoggedInUserName() {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		return authentication.getName();
 	}
 
 	/*
