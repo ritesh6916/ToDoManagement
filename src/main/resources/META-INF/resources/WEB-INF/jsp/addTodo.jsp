@@ -23,6 +23,10 @@
 				<form:errors path="targetDate" cssClass="text-warning"></form:errors>
 			</fieldset>
 
+			<form:input type="hidden" path="id" />
+
+			<form:input type="hidden" path="done" />
+
 			<input class="btn btn-success" type="submit">
 		</form:form>
 	</div>
