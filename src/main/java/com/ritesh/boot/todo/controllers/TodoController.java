@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 
 //http://localhost:8080/TodoManagement/login
 
-@Controller
+//@Controller
 @SessionAttributes("userid")
 public class TodoController {
 
