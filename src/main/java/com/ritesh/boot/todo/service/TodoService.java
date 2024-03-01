@@ -21,6 +21,8 @@ public class TodoService {
 		todoes.add(new Todo(++countTodo, "Ritesh", "Brindavan Holi ", LocalDate.now().plusDays(30), false));
 		todoes.add(
 				new Todo(++countTodo, "Ritesh", "Learn Spring Boot Security ", LocalDate.now().plusMonths(1), false));
+		todoes.add(new Todo(++countTodo, "Dummy", "I am a dummy user for testing... ", LocalDate.now().plusDays(30),
+				false));
 	}
 
 	public List<Todo> getAlltodoes() {
@@ -46,7 +48,7 @@ public class TodoService {
 	public List<Todo> findByName(String name) {
 		List<Todo> list = new ArrayList<>();
 		for (Todo todo : todoes) {
-			if(todo.getUsername().equalsIgnoreCase(name)) {
+			if (todo.getUsername().equalsIgnoreCase(name)) {
 				list.add(todo);
 			}
 		}
@@ -55,7 +57,8 @@ public class TodoService {
 
 	public void updateTodo(@Valid Todo todo) {
 		deleteById(todo.getId());
-		//todoes.add(new Todo(todo.getId(),todo.getUsername(), todo.getDescription(), todo.getTargetDate(), todo.isDone());
+		// todoes.add(new Todo(todo.getId(),todo.getUsername(), todo.getDescription(),
+		// todo.getTargetDate(), todo.isDone());
 		todoes.add(todo);
 	}
 }
