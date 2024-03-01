@@ -2,16 +2,20 @@ package com.ritesh.boot.todo.template;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class Todo {
 
+	@Id
 	private int id;
 	private String username;
 
 	@Size(min = 10, message = "Please enter atleast 10 characters...")
 	private String description;
-	private LocalDate targetDate;
+	private LocalDate targetDate; // In DB it will be "target_date" due to "D"
 	private boolean done;
 
 	public Todo() {
@@ -73,5 +77,4 @@ public class Todo {
 		return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", done=" + done + "]";
 	}
-
 }
