@@ -43,6 +43,16 @@ public class TodoService {
 		return todo;
 	}
 
+	public List<Todo> findByName(String name) {
+		List<Todo> list = new ArrayList<>();
+		for (Todo todo : todoes) {
+			if(todo.getUsername().equalsIgnoreCase(name)) {
+				list.add(todo);
+			}
+		}
+		return list;
+	}
+
 	public void updateTodo(@Valid Todo todo) {
 		deleteById(todo.getId());
 		//todoes.add(new Todo(todo.getId(),todo.getUsername(), todo.getDescription(), todo.getTargetDate(), todo.isDone());

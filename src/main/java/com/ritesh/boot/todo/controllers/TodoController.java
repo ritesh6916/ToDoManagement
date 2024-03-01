@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -29,7 +31,7 @@ public class TodoController {
 	// to see list of toDoes
 	@RequestMapping("/todoes")
 	public ModelMap getAllTodoes(ModelMap mm) {
-		List<Todo> listTodo = todoService.getAlltodoes();
+		List<Todo> listTodo = todoService.findByName(getLoggedInUserName());
 		mm.addAttribute("todoes", listTodo);
 		return mm;
 	}
@@ -45,7 +47,7 @@ public class TodoController {
 	// To show Add TODO page
 	@RequestMapping("/add-todo")
 	public String addTodo(ModelMap mm) {
-		Todo todo = new Todo(0, (String) mm.get("userid"), "", LocalDate.now().plusYears(1), false);
+		Todo todo = new Todo(0, getLoggedInUserName(), "", LocalDate.now().plusYears(1), false);
 		mm.put("todo", todo);
 		return "addTodo";
 	}
@@ -57,11 +59,11 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "addTodo";
 		}
-		todoService.addtodo((String) mm.get("userid"), todo.getDescription(), todo.getTargetDate(), false);
+		todoService.addtodo(getLoggedInUserName(), todo.getDescription(), todo.getTargetDate(), false);
 		return "redirect:/todoes";
 	}
 
-	// to Delete a todo
+	// to Delete a Todo
 	@RequestMapping("/delete-todo")
 	public String deleteTodo(@RequestParam("id") int id) {
 		todoService.deleteById(id);
@@ -83,9 +85,16 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "addTodo";
 		}
-		todo.setUsername((String)mm.get("userid"));
+		todo.setUsername(getLoggedInUserName());
 		todoService.updateTodo(todo);
 		return "redirect:/todoes";
+	}
+
+	private String getLoggedInUserName() {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		return authentication.getName();
 	}
 
 }
