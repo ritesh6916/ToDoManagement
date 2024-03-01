@@ -15,12 +15,21 @@ public class SecurityConfiguration {
 
 	@Bean
 	public InMemoryUserDetailsManager configureUser() {
+
+		String username = "Ritesh";
+		String password = "rrr";
+
+		UserDetails ritesh = createNewUser(username, password);
+		UserDetails dummy = createNewUser("Dummy", "123");
+
+		return new InMemoryUserDetailsManager(ritesh, dummy);
+	}
+
+	private UserDetails createNewUser(String username, String password) {
 		Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
-
-		UserDetails user = User.builder().passwordEncoder(passwordEncoder).username("Ritesh").password("rrr")
+		UserDetails user = User.builder().passwordEncoder(passwordEncoder).username(username).password(password)
 				.roles("USER", "ADMIN").build();
-
-		return new InMemoryUserDetailsManager(user);
+		return user;
 	}
 
 	@Bean
