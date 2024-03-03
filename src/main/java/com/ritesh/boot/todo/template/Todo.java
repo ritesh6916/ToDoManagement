@@ -2,14 +2,22 @@ package com.ritesh.boot.todo.template;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Service;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Size;
 
+@Service
 @Entity
+@SequenceGenerator(name = "Id_gen", sequenceName = "Id_gen", initialValue = 7)
 public class Todo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "Id_gen")
 	private int id;
 	private String username;
 
