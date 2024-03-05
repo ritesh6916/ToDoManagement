@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,6 +31,8 @@ public class TodoJpaController {
 	@Autowired
 	TodoRepository todoRepository;
 
+	Logger logger = LoggerFactory.getLogger(getClass().getName());
+
 	public TodoJpaController() {
 		super();
 
@@ -49,8 +53,8 @@ public class TodoJpaController {
 
 	// To show Add TODO page
 	@RequestMapping("/add-todo")
-	public String addTodo(ModelMap mm) {
-		Todo todo = new Todo(0, getLoggedInUserName(), "", LocalDate.now().plusYears(1), false);
+	public String showAddTodoPage(ModelMap mm) {
+		Todo todo = new Todo(0, getLoggedInUserName(), "", LocalDate.now(), false);
 		mm.put("todo", todo);
 		return "addTodo";
 	}
@@ -64,6 +68,7 @@ public class TodoJpaController {
 		}
 		todo.setUsername(getLoggedInUserName());
 		todoRepository.save(todo);
+		logger.debug("Todo added by" + getLoggedInUserName());
 		return "redirect:/todoes";
 	}
 
@@ -71,6 +76,7 @@ public class TodoJpaController {
 	@RequestMapping("/delete-todo")
 	public String deleteTodo(@RequestParam("id") int id) {
 		todoRepository.deleteById(id);
+		logger.debug("A Todo is deleted by  " + getLoggedInUserName() + " with id: " + id);
 		return "redirect:/todoes";
 	}
 
@@ -91,6 +97,7 @@ public class TodoJpaController {
 		}
 		todo.setUsername(getLoggedInUserName());
 		todoRepository.save(todo);
+		logger.debug("A Todo is updated by " + getLoggedInUserName() + " with id: " + todo.getId());
 		return "redirect:/todoes";
 	}
 
